@@ -109,11 +109,9 @@ class SNMPGraphite < Sensu::Plugin::Metric::CLI::Graphite
         else
           output "#{config[:host]}.#{config[:suffix]}.#{name}", vb.value.to_f
         end
-      # rubocop:disable Lint/HandleExceptions
-      rescue NameError
+      rescue NameError # rubocop:disable all
         # Some values may fail to cast to float
       end
-      # rubocop:enable Lint/HandleExceptions
     end
     manager.close
     ok
