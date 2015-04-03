@@ -42,6 +42,7 @@ def graphite_safe_name(name)
   name.gsub(/\W/, '_')
 end
 
+# Class that collects SNMP if metrics and outputs them in graphite format.
 class SNMPIfStatsGraphite < Sensu::Plugin::Metric::CLI::Graphite
   option :host,
          short: '-h host',
