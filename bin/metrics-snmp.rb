@@ -21,6 +21,7 @@ require 'rubygems' if RUBY_VERSION < '1.9.0'
 require 'sensu-plugin/metric/cli'
 require 'snmp'
 
+# Class that collects and outputs SNMP metrics in graphite format
 class SNMPGraphite < Sensu::Plugin::Metric::CLI::Graphite
   option :host,
          short: '-h host',
