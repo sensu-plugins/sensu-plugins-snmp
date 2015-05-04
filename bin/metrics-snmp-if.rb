@@ -133,7 +133,7 @@ class SNMPIfStatsGraphite < Sensu::Plugin::Metric::CLI::Graphite
       ifInErrors ifOutErrors ifInDiscards ifOutDiscards ifSpeed
     )
     if_table_columns = if_table_common_columns +
-      (config[:low_capacity] ? if_table_LC_columns : if_table_HC_columns)
+                       (config[:low_capacity] ? if_table_LC_columns : if_table_HC_columns)
 
     SNMP::Manager.open(host: "#{config[:host]}", community: "#{config[:community]}", version: config[:version]) do |manager|
       manager.walk(if_table_columns) do |row_array|
