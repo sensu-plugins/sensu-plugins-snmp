@@ -9,10 +9,10 @@
 ## Functionality
 
 ## Files
- * bin/check-snmp
- * bin/metrics-snmp-bulk
- * bin/metrics-snmp-if
- * bin/metrics-snmp
+ * bin/check-snmp.rb
+ * bin/metrics-snmp-bulk.rb
+ * bin/metrics-snmp-if.rb
+ * bin/metrics-snmp.rb
 
 ## Usage
 
