@@ -114,7 +114,7 @@ class SNMPIfStatsGraphite < Sensu::Plugin::Metric::CLI::Graphite
          default: false,
          description: 'Use low capacity counters'
 
-  def run
+  def run # rubocop:disable all
     if_table_HC_columns = %w(
       ifHCInOctets ifHCOutOctets
       ifHCInUcastPkts ifHCOutUcastPkts

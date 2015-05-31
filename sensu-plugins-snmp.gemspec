@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
                                'production_status'  => 'unstable - testing recommended',
                                'release_draft'      => 'false',
                                'release_prerelease' => 'false'
-                              }
+  }
   s.name                   = 'sensu-plugins-snmp'
   s.platform               = Gem::Platform::RUBY
   s.post_install_message   = 'You can use the embedded Ruby by setting EMBEDDED_RUBY=true in /etc/default/sensu'
@@ -38,7 +38,7 @@ Gem::Specification.new do |s|
   s.version                = SensuPluginsSnmp::Version::VER_STRING
 
   s.add_runtime_dependency 'sensu-plugin', '1.1.0'
-  s.add_runtime_dependency 'snmp', '1.2.0'
+  s.add_runtime_dependency 'snmp',         '1.2.0'
 
   s.add_development_dependency 'codeclimate-test-reporter', '~> 0.4'
   s.add_development_dependency 'rubocop',                   '~> 0.30'
