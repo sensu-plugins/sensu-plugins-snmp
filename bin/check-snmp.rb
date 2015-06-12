@@ -22,6 +22,7 @@
 require 'sensu-plugin/check/cli'
 require 'snmp'
 
+# Class that checks the return from querying SNMP.
 class CheckSNMP < Sensu::Plugin::Check::CLI
   option :host,
          short: '-h host',
