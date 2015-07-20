@@ -4,8 +4,9 @@
 #
 # This is a simple script to collect metrics from a SNMP OID value
 #
-#
-# Requires SNMP gem
+# DEPENDENCIES:
+#   gem: sensu-plugin
+#   gem: snmp
 #
 # USAGE:
 #
