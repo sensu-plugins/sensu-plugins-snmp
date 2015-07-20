@@ -8,8 +8,11 @@
 # modern devices probably support. If there is no HC support, use --low-capacity
 # flag.
 #
-# Example
-# -------
+# DEPENDENCIES:
+#   gem: sensu-plugin
+#   gem: snmp
+#
+# USAGE:
 #
 #   snmp-if-metrics.rb -C community -h host
 #
@@ -27,12 +30,12 @@
 # - `--version`: Set SNMP protocol version (SNMPv2c or SNMPv1)
 # - `--low-capacity`: Use low capacity counters
 #
+# LICENSE:
 # Copyright (c) 2013 Joe Miller
 #
 # Released under the same terms as Sensu (the MIT license); see LICENSE
 # for details.
 
-# #YELLOW
 # rubocop:disable VariableName
 require 'sensu-plugin/metric/cli'
 require 'snmp'
