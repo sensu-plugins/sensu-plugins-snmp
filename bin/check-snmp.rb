@@ -5,14 +5,16 @@
 # This is a simple SNMP check script for Sensu, We need to supply details like
 # Server, port, SNMP community, and Limits
 #
-#
-# Requires SNMP gem
+# DEPENDENCIES:
+#   gem: sensu-plugin
+#   gem: snmp
 #
 # USAGE:
 #
 #   check-snmp -h host -C community -O oid -w warning -c critical
 #   check-snmp -h host -C community -O oid -m "(P|p)attern to match\.?"
 #
+# LICENSE:
 #
 #  Author Deepak Mohan Das   <deepakmdass88@gmail.com>
 #
