@@ -4,13 +4,15 @@
 #
 # This is a script to 'bulk walk' an SNMP OID value, collecting metrics
 #
-#
-# Requires SNMP gem
+# DEPENDENCIES:
+#   gem: sensu-plugin
+#   gem: snmp
 #
 # USAGE:
 #
 #   snmp-bulk-metrics -h host -C community -O oid1,oid2... -s suffix
 #
+# LICENSE:
 #   Copyright 2014 Matthew Richardson <m.richardson@ed.ac.uk>
 #   Based on snmp-metrics.rb by Double Negative Limited
 #
