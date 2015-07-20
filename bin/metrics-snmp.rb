@@ -12,6 +12,7 @@
 #
 #   check-snmp -h host -C community -O oid -p prefix -s suffix
 #
+# LICENSE:
 #   Copyright (c) 2013 Double Negative Limited
 #   Based on check-snmp.rb by Deepak Mohan Das   <deepakmdass88@gmail.com>
 #
