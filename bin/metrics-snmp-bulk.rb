@@ -105,13 +105,13 @@ class SNMPGraphite < Sensu::Plugin::Metric::CLI::Graphite
       name = vb.oid
       name = "#{name}".gsub('.', '_') if config[:graphite]
       begin
-	metric_string = config[:host]
-	metric_string = "#{config[:prefix]}.#{metric_string}" if config[:prefix]
-	metric_string += ".#{config[:suffix]}" if config[:suffix]
-	metric_string += ".#{name}"
-	output metric_string, vb.value.to_f
+        metric_string = config[:host]
+        metric_string = "#{config[:prefix]}.#{metric_string}" if config[:prefix]
+        metric_string += ".#{config[:suffix]}" if config[:suffix]
+        metric_string += ".#{name}"
+        output metric_string, vb.value.to_f
       rescue NameError # rubocop:disable all
-        # Some values may fail to cast to float
+        # Rescue as some values may fail to cast to float
       end
     end
     manager.close
