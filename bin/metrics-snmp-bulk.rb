@@ -107,7 +107,7 @@ class SNMPGraphite < Sensu::Plugin::Metric::CLI::Graphite
       name = "#{name}".gsub('.', '_') if config[:graphite]
       begin
         if config[:prefix]
-          output "#{config[:prefix]}.#{config[:host]}.#{config[:suffix]}.#{name}", value.to_f
+          output "#{config[:prefix]}.#{config[:host]}.#{config[:suffix]}.#{name}", vb.value.to_f
         else
           output "#{config[:host]}.#{config[:suffix]}.#{name}", vb.value.to_f
         end
