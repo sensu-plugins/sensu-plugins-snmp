@@ -4,6 +4,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## Unreleased
+### Fixed
+- Fixed graphite output when using a prefix in metrics-snmp-bulk.rb
+
+### Added
+- Made suffix an optional flag in metrics-snmp-bulk.rb so you can choose exactly how to format your metrics output
 
 ## [0.0.3] - 2015-07-14
 ### Changed
