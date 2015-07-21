@@ -10,7 +10,7 @@
 #
 # USAGE:
 #
-#   snmp-bulk-metrics -h host -C community -O oid1,oid2... -s suffix
+#   snmp-bulk-metrics -h host -C community -O oid1,oid2...
 #
 # LICENSE:
 #   Copyright 2014 Matthew Richardson <m.richardson@ed.ac.uk>
@@ -46,8 +46,7 @@ class SNMPGraphite < Sensu::Plugin::Metric::CLI::Graphite
 
   option :suffix,
          short: '-s suffix',
-         description: 'suffix to attach to graphite path',
-         required: true
+         description: 'suffix to attach to graphite path'
 
   option :snmp_version,
          short: '-v version',
@@ -106,11 +105,11 @@ class SNMPGraphite < Sensu::Plugin::Metric::CLI::Graphite
       name = vb.oid
       name = "#{name}".gsub('.', '_') if config[:graphite]
       begin
-        if config[:prefix]
-          output "#{config[:prefix]}.#{config[:host]}.#{config[:suffix]}.#{name}", vb.value.to_f
-        else
-          output "#{config[:host]}.#{config[:suffix]}.#{name}", vb.value.to_f
-        end
+	metric_string = config[:host]
+	metric_string = "#{config[:prefix]}.#{metric_string}" if config[:prefix]
+	metric_string += ".#{config[:suffix]}" if config[:suffix]
+	metric_string += ".#{name}"
+	output metric_string, vb.value.to_f
       rescue NameError # rubocop:disable all
         # Some values may fail to cast to float
       end
