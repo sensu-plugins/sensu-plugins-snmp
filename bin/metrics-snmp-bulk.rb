@@ -110,7 +110,7 @@ class SNMPGraphite < Sensu::Plugin::Metric::CLI::Graphite
         metric_string += ".#{config[:suffix]}" if config[:suffix]
         metric_string += ".#{name}"
         output metric_string, vb.value.to_f
-      rescue NameError # rubocop:disable all
+      rescue NameError # rubocop:disable Lint/HandleExceptions
         # Rescue as some values may fail to cast to float
       end
     end
