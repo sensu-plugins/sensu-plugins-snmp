@@ -1,7 +1,7 @@
 #! /usr/bin/env ruby
-# 
+#
 #   check-snmp-disk
-# 
+#
 # DESCRIPTION:
 #
 #   This is a simple SNMP check disk script for Sensu,
@@ -14,14 +14,14 @@
 # PLATFORMS:
 #
 # DEPENDENCIES:
-#   gem: sensu-plugin 
+#   gem: sensu-plugin
 #   gem: SNMP
 #
 # USAGE:
 #   check-snmp -h host -C public -m /mnt -w 75 -c 85
 #
 #   if you want to search for specific device and not regex add a comma to the pattern:
-#   check-snmp -h host -C public -m /, 
+#   check-snmp -h host -C public -m /,
 #
 # NOTES:
 #   To search for device description in your server or applicance run the following command:
@@ -93,7 +93,6 @@ class CheckSNMP < Sensu::Plugin::Check::CLI
   def run
     base_oid = '1.3.6.1.2.1.25.2.3.1'
     dev_desc_oid = base_oid + '.3'
-    dev_unit_oid = base_oid + '.4'
     dev_size_oid = base_oid + '.5'
     dev_used_oid = base_oid + '.6'
     begin
@@ -104,19 +103,19 @@ class CheckSNMP < Sensu::Plugin::Check::CLI
       response = manager.get_bulk(0, 200, [dev_desc_oid])
       dev_indexes = []
       response.each_varbind do |var|
-        next if config[:ignoremnt] && config[:ignoremnt].include?(var.value.to_s.split(",")[0])
+        next if config[:ignoremnt] && config[:ignoremnt].include?(var.value.to_s.split(',')[0])
         if var.value.to_s =~ /#{config[:mount_point]}/
           dev_indexes.push(var.name[-1])
         end
       end
       dev_indexes.each do |dev_index|
-        response = manager.get(["#{dev_desc_oid}.#{dev_index}", "#{dev_unit_oid}.#{dev_index}", "#{dev_size_oid}.#{dev_index}", "#{dev_used_oid}.#{dev_index}"])
-        dev_desc, dev_unit, dev_size, dev_used = response.varbind_list
+        response = manager.get(["#{dev_desc_oid}.#{dev_index}", "#{dev_size_oid}.#{dev_index}", "#{dev_used_oid}.#{dev_index}"])
+        dev_desc, dev_size, dev_used = response.varbind_list
         perc = dev_used.value.to_f / dev_size.value.to_f * 100
         if perc > config[:critical]
-          @crit_mnt << "#{dev_desc.value.to_s} = #{perc.round(2)}%"
+          @crit_mnt << "#{dev_desc.value} = #{perc.round(2)}%"
         elsif perc > config[:warning]
-          @warn_mnt << "#{dev_desc.value.to_s} = #{perc.round(2)}%"
+          @warn_mnt << "#{dev_desc.value} = #{perc.round(2)}%"
         end
       end
     rescue SNMP::RequestTimeout
