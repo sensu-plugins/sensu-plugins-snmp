@@ -79,7 +79,7 @@ class CheckSNMP < Sensu::Plugin::Check::CLI
          short: '-t timeout (seconds)',
          default: '1',
          description: 'SNMP timeout'
-  
+
   def initialize
     super
     @crit_mnt = []
