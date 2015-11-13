@@ -3,9 +3,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
-## [0.1.0] - 2015-09-14
+## Unreleased
+
+## [0.1.0] - 2015-11-13
 ### Added
-- Added a script check-snmp-disk, that check disk utilization using SNMP
+- Added a script check-snmp-disk, that checks disk utilization using SNMP
 
 ## [0.0.4] - 2015-07-22
 ### Fixed
