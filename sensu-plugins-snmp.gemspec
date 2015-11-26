@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.description            = 'This plugin provides native SNMP instrumentation
                               for monitoring and metrics collection, including:
                               generic OID single/bulk query for status and
-                              metrics, and ifTable metrics'
+                              metrics, and ifTable metrics.'
   s.email                  = '<sensu-users@googlegroups.com>'
   s.executables            = Dir.glob('bin/**/*').map { |file| File.basename(file) }
   s.files                  = Dir.glob('{bin,lib}/**/*') + %w(LICENSE README.md CHANGELOG.md)
