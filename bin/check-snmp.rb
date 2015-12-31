@@ -64,6 +64,11 @@ class CheckSNMP < Sensu::Plugin::Check::CLI
          short: '-t timeout (seconds)',
          default: '1'
 
+  option :debug,
+         short: '-D (true|false)',
+         description: 'Enable debugging to assist with inspecting OID values / data.',
+         default: 'false'
+
   def run
     begin
       manager = SNMP::Manager.new(host: "#{config[:host]}",
@@ -71,6 +76,10 @@ class CheckSNMP < Sensu::Plugin::Check::CLI
                                   version: config[:snmp_version].to_sym,
                                   timeout: config[:timeout].to_i)
       response = manager.get(["#{config[:objectid]}"])
+      if config[:debug] and config[:debug] == 'true'
+        puts "DEBUG OUTPUT:"
+        response.each_varbind {|vb| puts vb.inspect}
+      end
     rescue SNMP::RequestTimeout
       unknown "#{config[:host]} not responding"
     rescue => e
