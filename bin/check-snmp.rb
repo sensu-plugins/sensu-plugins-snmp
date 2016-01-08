@@ -76,9 +76,9 @@ class CheckSNMP < Sensu::Plugin::Check::CLI
                                   version: config[:snmp_version].to_sym,
                                   timeout: config[:timeout].to_i)
       response = manager.get(["#{config[:objectid]}"])
-      if config[:debug] and config[:debug] == 'true'
-        puts "DEBUG OUTPUT:"
-        response.each_varbind {|vb| puts vb.inspect}
+      if config[:debug] && config[:debug] == 'true'
+        puts 'DEBUG OUTPUT:'
+        response.each_varbind { |vb| puts vb.inspect }
       end
     rescue SNMP::RequestTimeout
       unknown "#{config[:host]} not responding"
