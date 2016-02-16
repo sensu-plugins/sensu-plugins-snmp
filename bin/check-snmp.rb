@@ -65,9 +65,11 @@ class CheckSNMP < Sensu::Plugin::Check::CLI
          default: '1'
 
   option :debug,
-         short: '-D (true|false)',
+         short: '-D',
+         long: '--debug',
          description: 'Enable debugging to assist with inspecting OID values / data.',
-         default: 'false'
+         boolean: true,
+         default: false
 
   def run
     begin
@@ -76,7 +78,7 @@ class CheckSNMP < Sensu::Plugin::Check::CLI
                                   version: config[:snmp_version].to_sym,
                                   timeout: config[:timeout].to_i)
       response = manager.get(["#{config[:objectid]}"])
-      if config[:debug] && config[:debug] == 'true'
+      if config[:debug]
         puts 'DEBUG OUTPUT:'
         response.each_varbind { |vb| puts vb.inspect }
       end
