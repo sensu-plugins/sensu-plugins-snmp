@@ -65,7 +65,7 @@ class CheckSNMP < Sensu::Plugin::Check::CLI
          long: '--convert-timeticks',
          description: 'Convert SNMP::TimeTicks to Integer for comparisons',
          boolean: true,
-         default: 'false'
+         default: false
 
   option :timeout,
          short: '-t timeout (seconds)',
