@@ -61,8 +61,10 @@ class CheckSNMP < Sensu::Plugin::Check::CLI
          default: 'ge'
 
   option :convert_timeticks,
-         short: '-T (true|false)',
-         description: 'Convert SNMP::TimeTick to Integer for comparisons',
+         short: '-T',
+         long: '--convert-timeticks',
+         description: 'Convert SNMP::TimeTicks to Integer for comparisons',
+         boolean: true,
          default: 'false'
 
   option :timeout,
@@ -92,7 +94,7 @@ class CheckSNMP < Sensu::Plugin::Check::CLI
           critical "Value: #{vb.value} failed to match Pattern: #{config[:match]}"
         end
       else
-        snmp_value =  if config[:convert_timeticks] && config[:convert_timeticks] == 'true'
+        snmp_value =  if config[:convert_timeticks]
                         vb.value.is_a?(SNMP::TimeTicks) ? vb.value.to_i : vb.value
                       else
                         vb.value
