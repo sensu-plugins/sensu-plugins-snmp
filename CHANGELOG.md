@@ -4,6 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## Unreleased
+### Added
+- Option to convert SNMP Timetick data to Integer for easier comparisons
 
 ## [0.1.0] - 2015-11-13
 ### Added
