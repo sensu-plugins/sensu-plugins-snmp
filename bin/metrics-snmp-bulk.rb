@@ -85,8 +85,8 @@ class SNMPGraphite < Sensu::Plugin::Metric::CLI::Graphite
     oids = config[:objectid].split(',')
     mibs = config[:mibs].split(',')
     begin
-      manager = SNMP::Manager.new(host: "#{config[:host]}",
-                                  community: "#{config[:community]}",
+      manager = SNMP::Manager.new(host: config[:host].to_s,
+                                  community: config[:community].to_s,
                                   version: config[:snmp_version].to_sym,
                                   timeout: config[:timeout].to_i)
       if config[:mibdir] && !mibs.empty?
@@ -100,10 +100,10 @@ class SNMPGraphite < Sensu::Plugin::Metric::CLI::Graphite
     rescue => e
       unknown "An unknown error occured: #{e.inspect}"
     end
-    config[:host] = config[:host].gsub('.', '_') if config[:graphite]
+    config[:host] = config[:host].tr('.', '_') if config[:graphite]
     response.each_varbind do |vb|
       name = vb.oid
-      name = "#{name}".gsub('.', '_') if config[:graphite]
+      name = name.to_s.tr('.', '_') if config[:graphite]
       begin
         metric_string = config[:host]
         metric_string = "#{config[:prefix]}.#{metric_string}" if config[:prefix]

@@ -95,8 +95,8 @@ class CheckSNMP < Sensu::Plugin::Check::CLI
     dev_size_oid = base_oid + '.5'
     dev_used_oid = base_oid + '.6'
     begin
-      manager = SNMP::Manager.new(host: "#{config[:host]}",
-                                  community: "#{config[:community]}",
+      manager = SNMP::Manager.new(host: config[:host].to_s,
+                                  community: config[:community].to_s,
                                   version: config[:snmp_version].to_sym,
                                   timeout: config[:timeout].to_i)
       response = manager.get_bulk(0, 200, [dev_desc_oid])

@@ -16,13 +16,15 @@ notifications:
     on_failure: always
 script:
 - bundle exec rake default
+- gem build sensu-plugins-snmp.gemspec
+- gem install sensu-plugins-snmp-*.gem
 deploy:
   provider: rubygems
   api_key:
-    secure: i5O7jL3C7daoNbZCgUBoqrYy9fKnd7yiwxa5WoP9xo3AmiKaTWS8QPpE9j+DVHU5k5Sqghr7L2elYUqFUxexVDlSm8I4aJu+0TogoS+J+nURBHQHVq9OKsY0ehni9WTs+AoYdqJn3HMfl54D0MiqxzXD2StRPTgIzBFOhpUpoiA=
+    secure: HS+M7BPPjnJ7nEfyXJOkrWGDys3DsUVg7Eo6lkPeh536uiEe3WCEA8/cISQ0eS8SFxCQBgSdjQCI9r0mocOAinibiNNpvH1GTBkLAeDbpz0jhpZn1tKkHfiWMvm+TE8NeogxmAZPUpnut45Lt70XKFttU+LXwb/xYHb8PwcnpMM=
   gem: sensu-plugins-snmp
   on:
-    tags: true
+    ags: true
     all_branches: true
     rvm: 1.9.3
     rvm: 2.0
