@@ -14,6 +14,7 @@
  * bin/metrics-snmp-bulk.rb
  * bin/metrics-snmp-if.rb
  * bin/metrics-snmp.rb
+ * bin/metrics-snmp.py
 
 ## Usage
 

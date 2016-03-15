@@ -5,6 +5,10 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 
 ## [Unreleased]
 
+## [0.2.0] - 2016-03-14
+### Added
+- Added a YAML config file based SNMP metrics (graphite) plugin
+
 ## [0.1.0] - 2015-11-13
 ### Added
 - Added a script check-snmp-disk, that checks disk utilization using SNMP
