@@ -6,6 +6,7 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ## [Unreleased]
 ### Added
 - Option to convert SNMP Timetick data to Integer for easier comparisons
+- Debug option on check-snmp.rb for troubleshooting pesky SNMP data
 
 ## [0.1.0] - 2015-11-13
 ### Added
