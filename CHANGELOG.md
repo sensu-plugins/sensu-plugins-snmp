@@ -4,9 +4,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+
+## [0.2.0] - 2016-08-10
 ### Added
-- Option to convert SNMP Timetick data to Integer for easier comparisons
-- Debug option on check-snmp.rb for troubleshooting pesky SNMP data
+- Updated sensu-plugin dependency from `= 1.2.0` to `~> 1.2`
+- check-snmp.rb: Option to convert SNMP Timetick data to Integer for easier comparisons
+- check-snmp.rb Debug option for troubleshooting pesky SNMP data
 
 ## [0.1.0] - 2015-11-13
 ### Added
@@ -34,7 +37,8 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-snmp/compare/0.1.0...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-snmp/compare/0.2.0...HEAD
+[0.2.0]: https://github.com/sensu-plugins/sensu-plugins-snmp/compare/0.1.0...0.2.0
 [0.1.0]: https://github.com/sensu-plugins/sensu-plugins-snmp/compare/0.0.4...0.1.0
 [0.0.4]: https://github.com/sensu-plugins/sensu-plugins-snmp/compare/0.0.3...0.0.4
 [0.0.3]: https://github.com/sensu-plugins/sensu-plugins-snmp/compare/0.0.2...0.0.3
