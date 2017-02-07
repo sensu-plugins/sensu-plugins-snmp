@@ -118,6 +118,12 @@ class SNMPIfStatsGraphite < Sensu::Plugin::Metric::CLI::Graphite
          default: false,
          description: 'Use low capacity counters'
 
+  option :include_sysname,
+	long: '--sysname',
+	boolean: true,
+	default: false,
+	description: 'Include sysname in scheme output'
+
   def run # rubocop:disable Metrics/AbcSize
     if_table_HC_columns = %w(
       ifHCInOctets ifHCOutOctets
@@ -135,8 +141,20 @@ class SNMPIfStatsGraphite < Sensu::Plugin::Metric::CLI::Graphite
       ifIndex ifOperStatus ifName ifDescr
       ifInErrors ifOutErrors ifInDiscards ifOutDiscards ifSpeed
     )
+    sysname_columns = %w(
+	sysName
+    )
+    sysname = ""
     if_table_columns = if_table_common_columns +
                        (config[:low_capacity] ? if_table_LC_columns : if_table_HC_columns)
+    if config[:include_sysname]
+    	SNMP::Manager.open(host: config[:host].to_s, community: config[:community].to_s, version: config[:version]) do |manager|
+		manager.walk(sysname_columns) do |row_array|
+        		row = Hash[*sysname_columns.zip(row_array).flatten]
+			sysname = "#{graphite_safe_name(row['sysName'].value.to_s)}"
+		end
+	end
+    end
 
     SNMP::Manager.open(host: config[:host].to_s, community: config[:community].to_s, version: config[:version]) do |manager|
       manager.walk(if_table_columns) do |row_array|
@@ -144,7 +162,9 @@ class SNMPIfStatsGraphite < Sensu::Plugin::Metric::CLI::Graphite
         row = Hash[*if_table_columns.zip(row_array).flatten]
         puts row.inspect if config[:verbose]
         if_name = config[:include_name] ? "#{row['ifIndex'].value}__#{graphite_safe_name(row['ifName'].value.to_s)}" : row['ifIndex'].value.to_s
-
+	if config[:include_sysname]
+		if_name = "#{sysname}.#{if_name}"
+	end
         next if row['ifOperStatus'].value != 1 && !config[:include_down_interfaces]
 
         in_octets = config[:low_capacity] ? 'ifInOctets' : 'ifHCInOctets'
