@@ -4,6 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+### Added
+- check-snmp.rb: Option to reverse login in critical/warning thresholds
 
 ## [1.0.0] - 2017-07-04
 ### Added
