@@ -100,11 +100,11 @@ class CheckSNMP < Sensu::Plugin::Check::CLI
     rescue => e
       unknown "An unknown error occured: #{e.inspect}"
     end
-    if config[:reverse]
-      operators = { 'le' => :>=, 'ge' => :<= }
-    else
-      operators = { 'le' => :<=, 'ge' => :>= }
-    end
+    operators = if config[:reverse]
+                  { 'le' => :>=, 'ge' => :<= }
+                else
+                  { 'le' => :<=, 'ge' => :>= }
+                end
     symbol = operators[config[:comparison]]
 
     response.each_varbind do |vb|
