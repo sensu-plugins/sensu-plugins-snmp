@@ -46,6 +46,12 @@ class CheckSNMP < Sensu::Plugin::Check::CLI
          short: '-c critical',
          default: '20'
 
+  option :reverse,
+         short: '-r',
+         description: 'Revese the logic of the test for warning and critical thresholds',
+         boolean: true,
+         default: false
+
   option :match,
          short: '-m match',
          description: 'Regex pattern to match against returned value'
@@ -94,7 +100,11 @@ class CheckSNMP < Sensu::Plugin::Check::CLI
     rescue => e
       unknown "An unknown error occured: #{e.inspect}"
     end
-    operators = { 'le' => :<=, 'ge' => :>= }
+    if config[:reverse]
+      operators = { 'le' => :>=, 'ge' => :<= }
+    else
+      operators = { 'le' => :<=, 'ge' => :>= }
+    end
     symbol = operators[config[:comparison]]
 
     response.each_varbind do |vb|
