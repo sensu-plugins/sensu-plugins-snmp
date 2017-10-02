@@ -30,6 +30,10 @@ class CheckSNMP < Sensu::Plugin::Check::CLI
          short: '-h host',
          default: '127.0.0.1'
 
+  option :port,
+         short: '-p port',
+         default: '161'
+
   option :community,
          short: '-C snmp community',
          default: 'public'
@@ -81,6 +85,7 @@ class CheckSNMP < Sensu::Plugin::Check::CLI
   def run
     begin
       manager = SNMP::Manager.new(host: config[:host].to_s,
+                                  port: config[:port].to_i,
                                   community: config[:community].to_s,
                                   version: config[:snmp_version].to_sym,
                                   timeout: config[:timeout].to_i)
