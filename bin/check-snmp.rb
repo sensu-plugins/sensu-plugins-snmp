@@ -32,6 +32,7 @@ class CheckSNMP < Sensu::Plugin::Check::CLI
 
   option :port,
          short: '-P port',
+         long: '--port PORT',
          default: '161'
 
   option :community,

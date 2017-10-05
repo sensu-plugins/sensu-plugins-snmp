@@ -32,6 +32,7 @@ class SNMPGraphite < Sensu::Plugin::Metric::CLI::Graphite
 
   option :port,
          short: '-P port',
+         long: '--port PORT',
          default: '161'
 
   option :community,
