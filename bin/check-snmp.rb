@@ -31,7 +31,7 @@ class CheckSNMP < Sensu::Plugin::Check::CLI
          default: '127.0.0.1'
 
   option :port,
-         short: '-p port',
+         short: '-P port',
          default: '161'
 
   option :community,

@@ -12,6 +12,15 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 ### Fixed
 - typos in changelog and pr template (@majormoses)
 
+### Added
+- check-snmp-disk.rb: added `--port|-P` option (@freepenguins)
+- metrics-snmp.rb: added `--port|-P` option (@freepenguins)
+- metrics-snmp-bulk.rb: added `--port|-P` option (@freepenguins)
+- metrics-snmp-if.rb: added `--port|-P` option (@freepenguins)
+
+### Fixed
+- check-snmp.rb: changed port option from `-p` to `-P` to avoid confusion with prefix (@freepenguins)
+
 ## [1.1.0] - 2017-10-04
 ### Added
 - check-snmp.rb: added `--port` option (@freepenguins)

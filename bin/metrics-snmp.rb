@@ -10,7 +10,7 @@
 #
 # USAGE:
 #
-#   check-snmp -h host -C community -O oid -p prefix -s suffix
+#   check-snmp -h host -P port -C community -O oid -p prefix -s suffix
 #
 # LICENSE:
 #   Copyright (c) 2013 Double Negative Limited
@@ -29,6 +29,10 @@ class SNMPGraphite < Sensu::Plugin::Metric::CLI::Graphite
          boolean: true,
          default: '127.0.0.1',
          required: true
+
+  option :port,
+         short: '-P port',
+         default: '161'
 
   option :community,
          short: '-C snmp community',
@@ -71,7 +75,7 @@ class SNMPGraphite < Sensu::Plugin::Metric::CLI::Graphite
   def run
     mibs = config[:mibs].split(',')
     begin
-      manager = SNMP::Manager.new(host: config[:host].to_s, community: config[:community].to_s, version: config[:snmp_version].to_sym)
+      manager = SNMP::Manager.new(host: config[:host].to_s, port: config[:port].to_i, community: config[:community].to_s, version: config[:snmp_version].to_sym)
       if config[:mibdir] && !mibs.empty?
         manager.load_modules(mibs, config[:mibdir])
       end
