@@ -5,6 +5,9 @@ This CHANGELOG follows the format listed at [Keep A Changelog](http://keepachang
 
 ## [Unreleased]
 
+### Added
+- check-snmp.rb: added `--port` option (@freepenguins)
+
 ## [1.0.0] - 2017-07-04
 ### Added
 - Ruby 2.3.0 testing (@Evesy)
