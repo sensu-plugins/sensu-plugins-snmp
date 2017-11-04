@@ -30,6 +30,11 @@ class SNMPGraphite < Sensu::Plugin::Metric::CLI::Graphite
          default: '127.0.0.1',
          required: true
 
+  option :port,
+         short: '-P port',
+         long: '--port PORT',
+         default: '161'
+
   option :community,
          short: '-C snmp community',
          boolean: true,
@@ -86,6 +91,7 @@ class SNMPGraphite < Sensu::Plugin::Metric::CLI::Graphite
     mibs = config[:mibs].split(',')
     begin
       manager = SNMP::Manager.new(host: config[:host].to_s,
+                                  port: config[:port].to_i,
                                   community: config[:community].to_s,
                                   version: config[:snmp_version].to_sym,
                                   timeout: config[:timeout].to_i)
