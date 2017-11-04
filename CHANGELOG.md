@@ -6,6 +6,8 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
 
+## [2.0.0] - 2017-11-04
+
 ### Changed
 - updated changelog guideline location (@majormoses)
 
@@ -18,7 +20,7 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 - metrics-snmp-bulk.rb: added `--port|-P` option (@freepenguins)
 - metrics-snmp-if.rb: added `--port|-P` option (@freepenguins)
 
-### Fixed
+### Breaking Change
 - check-snmp.rb: changed port option from `-p` to `-P` to avoid confusion with prefix (@freepenguins)
 
 ## [1.1.0] - 2017-10-04
@@ -68,7 +70,8 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-snmp/compare/1.1.0...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-snmp/compare/2.0.0...HEAD
+[2.0.0]: https://github.com/sensu-plugins/sensu-plugins-snmp/compare/1.1.0...2.0.0
 [1.1.0]: https://github.com/sensu-plugins/sensu-plugins-snmp/compare/1.0.0...1.1.0
 [1.0.0]: https://github.com/sensu-plugins/sensu-plugins-snmp/compare/0.2.0...1.0.0
 [0.2.0]: https://github.com/sensu-plugins/sensu-plugins-snmp/compare/0.1.0...0.2.0
