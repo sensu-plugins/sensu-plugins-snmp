@@ -6,6 +6,9 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
 
+### Added
+- metrics-snmp-if.rb: added `--timeout|-t` option which controls the request timeout (@rocdove)
+
 ## [2.0.0] - 2017-11-04
 
 ### Changed
