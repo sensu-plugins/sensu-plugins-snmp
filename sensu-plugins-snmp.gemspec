@@ -37,7 +37,7 @@ Gem::Specification.new do |s|
   s.test_files             = s.files.grep(%r{^(test|spec|features)/})
   s.version                = SensuPluginsSnmp::Version::VER_STRING
 
-  s.add_runtime_dependency 'sensu-plugin', '~> 1.2'
+  s.add_runtime_dependency 'sensu-plugin', '>= 1.2', '< 3.0'
   s.add_runtime_dependency 'snmp',         '1.2.0'
 
   s.add_development_dependency 'codeclimate-test-reporter', '~> 0.4'
