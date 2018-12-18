@@ -38,7 +38,7 @@ Gem::Specification.new do |s|
   s.version                = SensuPluginsSnmp::Version::VER_STRING
 
   s.add_runtime_dependency 'sensu-plugin', '~> 1.2'
-  s.add_runtime_dependency 'snmp',         '1.2.0'
+  s.add_runtime_dependency 'snmp',         '1.3.1'
 
   s.add_development_dependency 'codeclimate-test-reporter', '~> 1.0'
   s.add_development_dependency 'rubocop',                   '~> 0.40.0'
