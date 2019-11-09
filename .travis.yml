@@ -28,7 +28,7 @@ before_deploy:
 deploy:
 - provider: rubygems
   api_key:
-    secure: gEAG8w7v8luKjpTp1NvNQ3qMUoGpfsNWmBByhwXq+A/B2KeaLd5UnUSEFJIK2JkxLkTr1rIpiWxBQmuHKN+RReJm8nij0Awt+oHLKruWw3rOht+fnlXHlI67njbXwnmQPuG44SOX5tqesWzwMBd35dIrYNJyygvwSlDXIOQtHUA=
+    secure: HS+M7BPPjnJ7nEfyXJOkrWGDys3DsUVg7Eo6lkPeh536uiEe3WCEA8/cISQ0eS8SFxCQBgSdjQCI9r0mocOAinibiNNpvH1GTBkLAeDbpz0jhpZn1tKkHfiWMvm+TE8NeogxmAZPUpnut45Lt70XKFttU+LXwb/xYHb8PwcnpMM=
   gem: sensu-plugins-snmp
   on:
     tags: true
