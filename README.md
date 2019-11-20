@@ -72,7 +72,7 @@ spec:
   - entity.system.platform_family == 'rhel'
 ```
 
-##### Check manifest
+##### Check definition
 
 ```yaml
 ---
