@@ -55,7 +55,7 @@ Assets are the best way to make use of this handler. If you're not using an asse
 
 If you're using an earlier version of sensuctl, you can download the asset definition from [this project's Bonsai Asset Index page](https://bonsai.sensu.io/assets/sensu-plugins/sensu-plugins-snmp).
 
-##### Asset manifest
+##### Asset definition
 
 ```yaml
 ---
