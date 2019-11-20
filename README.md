@@ -21,6 +21,8 @@
 
 This plugin provides native SNMP instrumentation for monitoring and metrics collection, including: generic OID single/bulk query for status and metrics, and ifTable metrics.
 
+The Sensu assets packaged from this repository are built against the Sensu ruby runtime environment. When using these assets as part of a Sensu Go resource (check, mutator or handler), make sure you include the corresponding Sensu ruby runtime asset in the list of assets needed by the resource.  The current ruby-runtime assets can be found [here](https://bonsai.sensu.io/assets/sensu/sensu-ruby-runtime) in the [Bonsai Asset Index](bonsai.sensu.io)
+
 #### Files
  * bin/check-snmp.rb
  * bin/check-snmp-disk.rb
