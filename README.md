@@ -12,7 +12,7 @@
 - [Configuration](#configuration)
   - [Sensu Go](#sensu-go)
     - [Asset definition](#asset-definition)
-    - [Check manifest](#check-manifest)
+    - [Check definition](#check-definition)
   - [Sensu Core](#sensu-core)
     - [Check definition](#check-definition)
 - [Installation](#installation)
