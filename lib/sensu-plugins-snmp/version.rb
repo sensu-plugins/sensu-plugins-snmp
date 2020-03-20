@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SensuPluginsSnmp
   module Version
     MAJOR = 3
