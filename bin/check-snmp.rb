@@ -99,7 +99,7 @@ class CheckSNMP < Sensu::Plugin::Check::CLI
       end
     rescue SNMP::RequestTimeout
       unknown "#{config[:host]} not responding"
-    rescue => e
+    rescue StandardError => e
       unknown "An unknown error occured: #{e.inspect}"
     end
     operators = { 'le' => :<=, 'ge' => :>= }
@@ -121,7 +121,7 @@ class CheckSNMP < Sensu::Plugin::Check::CLI
 
         critical 'Critical state detected' if snmp_value.to_s.to_i.send(symbol, config[:critical].to_s.to_i)
         # #YELLOW
-        warning 'Warning state detected' if snmp_value.to_s.to_i.send(symbol, config[:warning].to_s.to_i) && !snmp_value.to_s.to_i.send(symbol, config[:critical].to_s.to_i) # rubocop:disable LineLength
+        warning 'Warning state detected' if snmp_value.to_s.to_i.send(symbol, config[:warning].to_s.to_i) && !snmp_value.to_s.to_i.send(symbol, config[:critical].to_s.to_i) # rubocop:disable Layout/LineLength
         unless snmp_value.to_s.to_i.send(symbol, config[:warning].to_s.to_i)
           ok 'All is well!'
         end

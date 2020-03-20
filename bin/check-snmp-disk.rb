@@ -110,7 +110,8 @@ class CheckSNMP < Sensu::Plugin::Check::CLI
       response = manager.get_bulk(0, 200, [dev_desc_oid])
       dev_indexes = []
       response.each_varbind do |var|
-        next if config[:ignoremnt] && config[:ignoremnt].include?(var.value.to_s.split(',')[0])
+        next if config[:ignoremnt]&.include?(var.value.to_s.split(',')[0])
+
         if var.value.to_s =~ /#{config[:mount_point]}/
           dev_indexes.push(var.name[-1])
         end
@@ -118,7 +119,7 @@ class CheckSNMP < Sensu::Plugin::Check::CLI
       dev_indexes.each do |dev_index|
         response = manager.get(["#{dev_desc_oid}.#{dev_index}", "#{dev_size_oid}.#{dev_index}", "#{dev_used_oid}.#{dev_index}"])
         dev_desc, dev_size, dev_used = response.varbind_list
-        perc = dev_used.value.to_f / dev_size.value.to_f * 100
+        perc = dev_used.value / dev_size.value.to_f * 100
         if perc > config[:critical]
           @crit_mnt << "#{dev_desc.value} = #{perc.round(2)}%"
         elsif perc > config[:warning]
@@ -127,7 +128,7 @@ class CheckSNMP < Sensu::Plugin::Check::CLI
       end
     rescue SNMP::RequestTimeout
       unknown "#{config[:host]} not responding"
-    rescue => e
+    rescue StandardError => e
       unknown "An unknown error occured: #{e.inspect}"
     end
     critical usage_summary unless @crit_mnt.empty?
