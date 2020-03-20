@@ -20,6 +20,7 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 ### Changed
 - Update development dep bundler requirement from ~> 1.7 to ~> 2.1
 - Update development dep rubocop requirement from ~> 0.4 to ~> 0.8
+- Update development dep yard requirement to ~> 0.9.11
 
 ## [2.1.0] - 2018-06-25
 ### Added
