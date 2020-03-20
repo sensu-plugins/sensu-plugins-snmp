@@ -38,7 +38,7 @@
 # Released under the same terms as Sensu (the MIT license); see LICENSE
 # for details.
 
-# rubocop:disable VariableName
+# rubocop:disable Naming/VariableName
 require 'sensu-plugin/metric/cli'
 require 'snmp'
 
@@ -198,4 +198,5 @@ class SNMPIfStatsGraphite < Sensu::Plugin::Metric::CLI::Graphite
     end
     ok
   end
+# rubocop:enable Naming/VariableName
 end
