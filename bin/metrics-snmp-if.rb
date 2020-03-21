@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: false
+
 # SNMP Interface Metrics
 # ===
 #
@@ -36,7 +38,7 @@
 # Released under the same terms as Sensu (the MIT license); see LICENSE
 # for details.
 
-# rubocop:disable VariableName
+# rubocop:disable Naming/VariableName
 require 'sensu-plugin/metric/cli'
 require 'snmp'
 
@@ -130,22 +132,22 @@ class SNMPIfStatsGraphite < Sensu::Plugin::Metric::CLI::Graphite
          description: 'Request timeout'
 
   def run # rubocop:disable Metrics/AbcSize
-    if_table_HC_columns = %w(
+    if_table_HC_columns = %w[
       ifHCInOctets ifHCOutOctets
       ifHCInUcastPkts ifHCOutUcastPkts
       ifHCInMulticastPkts ifHCOutMulticastPkts
       ifHCInBroadcastPkts ifHCOutBroadcastPkts
-    )
-    if_table_LC_columns = %w(
+    ]
+    if_table_LC_columns = %w[
       ifInOctets ifOutOctets
       ifInUcastPkts ifOutUcastPkts
       ifInMulticastPkts ifOutMulticastPkts
       ifInBroadcastPkts ifOutBroadcastPkts
-    )
-    if_table_common_columns = %w(
+    ]
+    if_table_common_columns = %w[
       ifIndex ifOperStatus ifName ifDescr
       ifInErrors ifOutErrors ifInDiscards ifOutDiscards ifSpeed
-    )
+    ]
     if_table_columns = if_table_common_columns +
                        (config[:low_capacity] ? if_table_LC_columns : if_table_HC_columns)
 
@@ -197,3 +199,4 @@ class SNMPIfStatsGraphite < Sensu::Plugin::Metric::CLI::Graphite
     ok
   end
 end
+# rubocop:enable Naming/VariableName

@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: false
+
 # SNMP Metrics
 # ===
 #
@@ -83,7 +85,7 @@ class SNMPGraphite < Sensu::Plugin::Metric::CLI::Graphite
       response = manager.get([config[:objectid].to_s])
     rescue SNMP::RequestTimeout
       unknown "#{config[:host]} not responding"
-    rescue => e
+    rescue StandardEerror => e
       unknown "An unknown error occured: #{e.inspect}"
     end
     config[:host] = config[:host].tr('.', '_') if config[:graphite]

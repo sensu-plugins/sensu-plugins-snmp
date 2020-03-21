@@ -5,6 +5,9 @@ This CHANGELOG follows the format listed [here](https://github.com/sensu-plugins
 Which is based on [Keep A Changelog](http://keepachangelog.com/)
 
 ## [Unreleased]
+
+
+## [3.0.0] - 2019-03-20
 ### Added
 - Travis build automation to generate Sensu Asset tarballs that can be used n conjunction with Sensu provided ruby runtime assets and the Bonsai Asset Index
 - Require latest sensu-plugin for Sensu Go support
@@ -12,6 +15,12 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 ### Breaking change
 - Updates minimum required ruby version to 2.3. Drop unsupported ruby versions.
 - Update dependancy on sensu-plugin to 4.0
+- Update runtime dep snmp requirement from = 1.2.0 to = 1.3.2
+
+### Changed
+- Update development dep bundler requirement from ~> 1.7 to ~> 2.1
+- Update development dep rubocop requirement from ~> 0.4 to ~> 0.8
+- Update development dep yard requirement to ~> 0.9.11
 
 ## [2.1.0] - 2018-06-25
 ### Added
@@ -81,7 +90,8 @@ Which is based on [Keep A Changelog](http://keepachangelog.com/)
 ### Added
 - initial release
 
-[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-snmp/compare/2.1.0...HEAD
+[Unreleased]: https://github.com/sensu-plugins/sensu-plugins-snmp/compare/3.0.0...HEAD
+[3.0.0]: https://github.com/sensu-plugins/sensu-plugins-snmp/compare/2.1.0...3.0.0
 [2.1.0]: https://github.com/sensu-plugins/sensu-plugins-snmp/compare/2.0.0...2.1.0
 [2.0.0]: https://github.com/sensu-plugins/sensu-plugins-snmp/compare/1.1.0...2.0.0
 [1.1.0]: https://github.com/sensu-plugins/sensu-plugins-snmp/compare/1.0.0...1.1.0

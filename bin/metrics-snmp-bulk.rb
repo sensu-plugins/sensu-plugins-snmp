@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: false
+
 # SNMP Bulk Metrics
 # ===
 #
@@ -103,7 +105,7 @@ class SNMPGraphite < Sensu::Plugin::Metric::CLI::Graphite
                                   oids)
     rescue SNMP::RequestTimeout
       unknown "#{config[:host]} not responding"
-    rescue => e
+    rescue StandardError => e
       unknown "An unknown error occured: #{e.inspect}"
     end
     config[:host] = config[:host].tr('.', '_') if config[:graphite]
@@ -116,7 +118,7 @@ class SNMPGraphite < Sensu::Plugin::Metric::CLI::Graphite
         metric_string += ".#{config[:suffix]}" if config[:suffix]
         metric_string += ".#{name}"
         output metric_string, vb.value.to_f
-      rescue NameError # rubocop:disable Lint/HandleExceptions
+      rescue NameError # rubocop:disable Lint/SuppressedException
         # Rescue as some values may fail to cast to float
       end
     end
